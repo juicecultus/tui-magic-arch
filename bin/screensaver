@@ -1,0 +1,30 @@
+#!/bin/bash
+# Matrix screensaver — power-aware idle timeout via tmux
+# Battery: 2 minutes, AC/Full: 5 minutes
+# Standalone version — main mechanism is in .tmux.conf + hw-arch.sh
+
+get_timeout() {
+    local status
+    status=$(cat /sys/class/power_supply/BAT0/status 2>/dev/null)
+    case "$status" in
+        Discharging) echo 120 ;;  # 2 minutes on battery
+        *)           echo 300 ;;  # 5 minutes on AC/Full
+    esac
+}
+
+# Configure tmux to use cmatrix as the lock command
+tmux set-option -g lock-command "cmatrix -ab -u 4 -C green" 2>/dev/null
+tmux set-option -g lock-after-time "$(get_timeout)" 2>/dev/null
+
+echo "Matrix screensaver armed ($(get_timeout)s idle timeout)"
+echo "Adjusts dynamically: 2min battery / 5min AC"
+
+# Monitor power state changes and update timeout
+while true; do
+    sleep 30
+    new_timeout=$(get_timeout)
+    current=$(tmux show-option -gv lock-after-time 2>/dev/null)
+    if [ "$new_timeout" != "$current" ]; then
+        tmux set-option -g lock-after-time "$new_timeout" 2>/dev/null
+    fi
+done

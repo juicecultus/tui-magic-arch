@@ -1,0 +1,29 @@
+# Tig config — Matrix theme
+
+# Settings
+set main-view-date = custom
+set main-view-date-format = "%Y-%m-%d %H:%M"
+set main-view-author-width = 15
+set tab-size = 4
+set ignore-case = smart-case
+set mouse = yes
+set refresh-mode = auto
+
+# Colors — Matrix green on black
+color default         green   black
+color cursor          black   green   bold
+color title-focus     black   green   bold
+color title-blur      green   black
+color status          green   black
+color search-result   black   green
+color diff-header     yellow  black   bold
+color diff-index      green   black
+color diff-chunk      cyan    black
+color diff-add        green   black
+color diff-del        red     black
+color "Author:"       green   black   bold
+color "Commit:"       green   black
+color "Date:"         cyan    black
+color tree.header     green   black   bold
+color tree.directory  green   black   bold
+color tree.file       default black

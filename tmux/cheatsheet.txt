@@ -1,0 +1,73 @@
+╔══════════════════════════════════════════════════════════════╗
+║           ThinkPad X40 — TUI Cheatsheet                     ║
+║           Prefix: Ctrl-a                                     ║
+╠══════════════════════════════════════════════════════════════╣
+║                                                              ║
+║  ── TMUX BASICS ──────────────────────────────────────────── ║
+║  Ctrl-a |     Split pane horizontal                          ║
+║  Ctrl-a -     Split pane vertical                            ║
+║  Ctrl-a h/j/k/l   Navigate panes (vim-style)                ║
+║  Ctrl-a H/J/K/L   Resize panes                              ║
+║  Ctrl-a 1-9   Switch window                                  ║
+║  Ctrl-a c     New window                                     ║
+║  Ctrl-a x     Close pane                                     ║
+║  Ctrl-a d     Detach session                                 ║
+║  Ctrl-a r     Reload config                                  ║
+║  Ctrl-a ?     This cheatsheet                                ║
+║                                                              ║
+║  ── QUICK LAUNCH (Ctrl-a then key) ─────────────────────── ║
+║                                                              ║
+║  EYE CANDY                                                   ║
+║  m   Matrix screensaver (cmatrix)                            ║
+║  T   Terminal clock (tty-clock)                              ║
+║  B   Bonsai tree (cbonsai)                                   ║
+║  D   Full dashboard layout                                   ║
+║                                                              ║
+║  SYSTEM                                                      ║
+║  b   System monitor (btop)                                   ║
+║  g   Disk usage (gdu)                                        ║
+║                                                              ║
+║  FILES                                                       ║
+║  n   File manager (ranger)                                   ║
+║  N   File manager (nnn)                                      ║
+║                                                              ║
+║  GIT                                                         ║
+║  t   Git TUI (tig)                                           ║
+║                                                              ║
+║  NETWORK                                                     ║
+║  i   Network monitor (iftop)                                 ║
+║  w   WiFi manager (nmtui)                                    ║
+║                                                              ║
+║  MEDIA                                                       ║
+║  v   Audio visualizer (cava)                                 ║
+║  M   Music player (cmus)                                     ║
+║                                                              ║
+║  PRODUCTIVITY                                                ║
+║  c   Calendar (calcurse)                                     ║
+║  R   RSS reader (newsboat)                                   ║
+║  W   Web browser (w3m)                                       ║
+║                                                              ║
+║  ── SHELL ALIASES ────────────────────────────────────────── ║
+║                                                              ║
+║  CORE          NETWORK         GIT                           ║
+║  ll  long ls   myip  ext IP    gs  status                    ║
+║  la  all ls    speed test      gl  log                       ║
+║  e   micro     wifi  nmtui     gd  diff                      ║
+║  edit nvim     net   iftop     ga  add                       ║
+║                trace mtr       gc  commit                    ║
+║  FILES                         gp  push                      ║
+║  fm  ranger    MEDIA           gt  tig                       ║
+║  n   nnn       music cmus                                    ║
+║  ncdu usage    vis   cava      SYSTEM                        ║
+║                play  mpv       mon  btop                     ║
+║  ARCHIVE                       sys  inxi                     ║
+║  extract       PRODUCTIVITY    nf   neofetch                 ║
+║  compress      cal  calcurse   temps cpu temp                ║
+║                rss  newsboat   psmem  mem hogs               ║
+║  MISC          mail neomutt    pscpu  cpu hogs               ║
+║  weather       web  w3m                                      ║
+║  matrix        calc bc         t    start tmux               ║
+║  clock         cheat sh        tl   list sessions            ║
+║  bonsai        task warrior    ta   attach session           ║
+║                                                              ║
+╚══════════════════════════════════════════════════════════════╝

@@ -1,0 +1,79 @@
+# Main bg and fg
+theme[main_bg]="#000000"
+theme[main_fg]="#00ff41"
+
+# Title color
+theme[title]="#00ff41"
+
+# Highlight color
+theme[hi_fg]="#00cc33"
+
+# Selected in processes
+theme[selected_bg]="#0d2b0d"
+theme[selected_fg]="#00ff41"
+
+# Inactive text
+theme[inactive_fg]="#1a5a1a"
+
+# Process box gradient
+theme[proc_misc]="#00aa22"
+
+# Cpu box
+theme[cpu_box]="#1a3a1a"
+
+# Mem/disks box
+theme[mem_box]="#1a3a1a"
+
+# Net box
+theme[net_box]="#1a3a1a"
+
+# Proc box
+theme[proc_box]="#1a3a1a"
+
+# Divider line
+theme[div_line]="#1a3a1a"
+
+# Temp graphs
+theme[temp_start]="#00ff41"
+theme[temp_mid]="#ccff00"
+theme[temp_end]="#ff3300"
+
+# Cpu graphs
+theme[cpu_start]="#003300"
+theme[cpu_mid]="#00aa22"
+theme[cpu_end]="#00ff41"
+
+# Free mem
+theme[free_start]="#002200"
+theme[free_mid]="#005500"
+theme[free_end]="#00aa22"
+
+# Cached mem
+theme[cached_start]="#003300"
+theme[cached_mid]="#006600"
+theme[cached_end]="#00cc33"
+
+# Available mem
+theme[available_start]="#002200"
+theme[available_mid]="#005500"
+theme[available_end]="#00aa22"
+
+# Used mem
+theme[used_start]="#004400"
+theme[used_mid]="#00aa22"
+theme[used_end]="#00ff41"
+
+# Download
+theme[download_start]="#003300"
+theme[download_mid]="#00aa22"
+theme[download_end]="#00ff41"
+
+# Upload
+theme[upload_start]="#002200"
+theme[upload_mid]="#006600"
+theme[upload_end]="#00cc33"
+
+# Process start-end
+theme[process_start]="#003300"
+theme[process_mid]="#00aa22"
+theme[process_end]="#00ff41"

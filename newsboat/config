@@ -1,0 +1,53 @@
+# Newsboat config — Matrix theme
+
+# General
+auto-reload yes
+reload-time 30
+reload-threads 2
+download-retries 2
+download-timeout 10
+prepopulate-query-feeds yes
+cleanup-on-quit yes
+
+# Display
+show-read-feeds yes
+show-read-articles yes
+feed-sort-order unreadarticlecount-asc
+article-sort-order date-desc
+text-width 80
+
+# Key bindings (vim-style)
+bind-key j down
+bind-key k up
+bind-key j next articlelist
+bind-key k prev articlelist
+bind-key J next-feed articlelist
+bind-key K prev-feed articlelist
+bind-key G end
+bind-key g home
+bind-key l open
+bind-key h quit
+bind-key u toggle-article-read
+
+# Browser
+browser "w3m %u"
+macro o set browser "w3m %u" ; open-in-browser ; set browser "w3m %u"
+
+# Colors — Matrix green
+color background          color46  default
+color listnormal          color46  default
+color listnormal_unread   color46  default bold
+color listfocus           color0   color46
+color listfocus_unread    color0   color46 bold
+color info                color0   color22 bold
+color article             color46  default
+
+# Highlight rules
+highlight article "^Feed:.*"      color46 default bold
+highlight article "^Title:.*"     color46 default bold
+highlight article "^Author:.*"    color22 default
+highlight article "^Date:.*"      color22 default
+highlight article "^Link:.*"      color36 default
+highlight article "\\[[0-9]+\\]"  color36 default bold
+highlight feedlist "---.*---"     color22 default bold
+highlight feedlist ".*0/0.."      color240 default

@@ -1,0 +1,23 @@
+# Calcurse config
+appearance.calendarview=monthly
+appearance.compactpanels=no
+appearance.defaultpanel=calendar
+appearance.layout=1
+appearance.notifybar=yes
+appearance.sidebar=yes
+appearance.theme=green on default
+daemon.enable=no
+format.inputdate=1
+format.notifydate=%a %F
+format.notifytime=%T
+format.outputdate=%D
+general.autogc=no
+general.autosave=yes
+general.confirmdelete=yes
+general.confirmquit=yes
+general.firstdayofweek=monday
+general.periodicsave=5
+general.systemdialogs=yes
+notification.command=printf '\a'
+notification.notifyall=flagged-only
+notification.warning=300

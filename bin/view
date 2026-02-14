@@ -1,0 +1,51 @@
+#!/bin/bash
+# Universal file viewer for TUI — auto-detects type
+# Usage: view <file>
+
+if [ -z "$1" ]; then
+    echo "Usage: view <file>"
+    exit 1
+fi
+
+FILE="$1"
+if [ ! -f "$FILE" ]; then
+    echo "File not found: $FILE"
+    exit 1
+fi
+
+MIME=$(file --mime-type -b "$FILE")
+EXT="${FILE##*.}"
+EXT_LOWER=$(echo "$EXT" | tr '[:upper:]' '[:lower:]')
+
+case "$MIME" in
+    image/*)
+        chafa "$FILE"
+        ;;
+    video/*)
+        mediainfo "$FILE"
+        ;;
+    audio/*)
+        mediainfo "$FILE"
+        ;;
+    application/pdf)
+        pdftotext -layout "$FILE" - | less
+        ;;
+    application/zip|application/x-tar|application/gzip|application/x-bzip2|application/x-xz|application/x-7z-compressed)
+        atool -l "$FILE" | less
+        ;;
+    text/*|application/json|application/xml|application/javascript)
+        bat --style=full "$FILE"
+        ;;
+    *)
+        case "$EXT_LOWER" in
+            dng|cr2|nef|arw|rw2|orf|raf)
+                chafa "$FILE"
+                echo ""
+                exiv2 "$FILE" 2>/dev/null | head -20
+                ;;
+            *)
+                bat --style=full "$FILE" 2>/dev/null || hexdump -C "$FILE" | head -40
+                ;;
+        esac
+        ;;
+esac

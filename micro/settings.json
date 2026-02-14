@@ -1,0 +1,19 @@
+{
+    "colorscheme": "simple",
+    "tabsize": 4,
+    "tabstospaces": true,
+    "autoindent": true,
+    "savecursor": true,
+    "saveundo": true,
+    "scrollbar": true,
+    "scrollspeed": 3,
+    "rmtrailingws": true,
+    "softwrap": true,
+    "wordwrap": true,
+    "syntax": true,
+    "sucmd": "sudo",
+    "mouse": true,
+    "clipboard": "internal",
+    "statusformatl": "$(filename) $(modified)($(line),$(col)) | $(status.paste) | ft:$(opt:filetype) | $(opt:fileformat)",
+    "statusformatr": "$(bind:CtrlQ): Quit | $(bind:CtrlS): Save"
+}

@@ -1,0 +1,13 @@
+# Newsboat RSS feeds — starter set
+# Add your own feeds here
+
+# Tech
+https://news.ycombinator.com/rss "~Hacker News" tech
+https://www.phoronix.com/rss.php "~Phoronix" tech linux
+https://lwn.net/headlines/rss "~LWN.net" tech linux
+https://feeds.arstechnica.com/arstechnica/technology-lab "~Ars Technica" tech
+
+# Linux
+https://www.debian.org/News/news "~Debian News" linux
+https://distrowatch.com/news/dw.xml "~DistroWatch" linux
+https://linuxjournal.com/node/feed "~Linux Journal" linux

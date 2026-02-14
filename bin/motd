@@ -1,0 +1,61 @@
+#!/bin/bash
+# Custom MOTD for MacBook 12" 2017 — Arch Linux
+# Uses basic ANSI colors (works on Linux console TERM=linux)
+
+G='\e[32m'       # green
+BG='\e[1;32m'    # bold green
+DG='\e[2;32m'    # dim green
+D='\e[2;37m'     # dim white
+R='\e[0m'        # reset
+
+clear
+echo -e "${DG}"
+figlet -f small "MacBook 12" 2>/dev/null || echo "  MacBook 12"
+echo -e "${R}"
+
+# System info
+UPTIME=$(uptime -p 2>/dev/null | sed 's/up //')
+CPU_TEMP=""
+for h in /sys/class/hwmon/hwmon*; do
+    [ "$(cat $h/name 2>/dev/null)" = "coretemp" ] && CPU_TEMP=$(awk '{printf "%.0f", $1/1000}' $h/temp1_input 2>/dev/null) && break
+done
+[ -z "$CPU_TEMP" ] && CPU_TEMP=$(awk '{printf "%.0f", $1/1000}' /sys/class/thermal/thermal_zone1/temp 2>/dev/null)
+MEM_USED=$(free -m | awk '/Mem:/ {print $3}')
+MEM_TOTAL=$(free -m | awk '/Mem:/ {print $2}')
+DISK_USED=$(df -h / | awk 'NR==2 {print $3"/"$2}')
+LOAD=$(cat /proc/loadavg | awk '{print $1}')
+IP=$(ip -4 addr show wlan0 2>/dev/null | grep -oP '(?<=inet\s)\d+(\.\d+){3}' || echo "?")
+BAT_NOW=$(cat /sys/class/power_supply/BAT0/charge_now 2>/dev/null)
+BAT_FULL=$(cat /sys/class/power_supply/BAT0/charge_full 2>/dev/null)
+BAT_STATUS=$(cat /sys/class/power_supply/BAT0/status 2>/dev/null)
+if [ -n "$BAT_NOW" ] && [ -n "$BAT_FULL" ] && [ "$BAT_FULL" -gt 0 ]; then
+    BAT=$((BAT_NOW * 100 / BAT_FULL))
+else
+    BAT=$(cat /sys/class/power_supply/BAT0/capacity 2>/dev/null || echo "?")
+fi
+case "$BAT_STATUS" in
+    Charging)    BAT_ICON="+" ;;
+    Discharging) BAT_ICON="-" ;;
+    *)           BAT_ICON="=" ;;
+esac
+
+echo -e "${BG}System${R}"
+echo ""
+printf "  ${G}%-10s${R} %s\n" "Uptime" "$UPTIME"
+printf "  ${G}%-10s${R} %s\n" "Load" "$LOAD"
+if [ -n "$CPU_TEMP" ]; then
+printf "  ${G}%-10s${R} %s\n" "CPU Temp" "${CPU_TEMP}°C"
+fi
+printf "  ${G}%-10s${R} %s\n" "Memory" "${MEM_USED}M / ${MEM_TOTAL}M"
+printf "  ${G}%-10s${R} %s\n" "Disk /" "$DISK_USED"
+printf "  ${G}%-10s${R} %s\n" "Battery" "${BAT_ICON}${BAT}%"
+printf "  ${G}%-10s${R} %s\n" "IP" "$IP"
+echo ""
+echo -e "${BG}Quick Launch${R}  ${D}(Ctrl-a, then key)${R}"
+echo ""
+printf "  ${BG}m${D} matrix    ${BG}b${D} btop      ${BG}n${D} ranger    ${BG}t${D} tig       ${BG}D${D} dashboard${R}\n"
+printf "  ${BG}v${D} cava      ${BG}M${D} cmus      ${BG}c${D} calcurse  ${BG}R${D} rss       ${BG}W${D} web${R}\n"
+printf "  ${BG}T${D} clock     ${BG}B${D} bonsai    ${BG}g${D} disk      ${BG}w${D} wifi${R}\n"
+echo ""
+echo -e "  ${D}Ctrl-a then H${R}  ${G}full cheatsheet${R}"
+echo ""
